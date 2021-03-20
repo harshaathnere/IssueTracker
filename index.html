@@ -16,25 +16,25 @@
 <h3>Add new issue</h3>
 <form id="issueInputForm">
     <div class="form-group">
-<label for="issuesDecInput">Description</label>
-<input type="text" class="form-control" id="issuesDecInput" placeholder="Describes the issues">
+<label for="issueDecInput">Description</label>
+<input type="text" class="form-control" id="issueDecInput" placeholder="Describes the issues">
     </div>
     <div class="form-group">
-        <label for="issuesServerityInput">Serverity</label>
-        <select id="ssuesServerityInput" class="form-control">
+        <label for="issueServerityInput">Serverity</label>
+        <select id="issueServerityInput" class="form-control">
             <option value="Low">Low</option>
             <option value="Meduim">Meduim</option>
             <option value="High">High</option>
         </select>
             </div>
             <div class="form-group">
-                <label for="issuesAssignedInput">Assigned to</label>
-                <input type="text" class="form-control" id="issuesAssignedInput" placeholder="Enter the Responsible">
+                <label for="issueAssignedInput">Assigned to</label>
+                <input type="text" class="form-control" id="issueAssignedInput" placeholder="Enter the Responsible">
                     </div>
                     <button type="submit" class="btn btn-primary">Add</button>
 </form>
 <div class="col-lg-12">
-    <div class="issueList">
+    <div id="issuesList">
 
      </div>
 </div>
@@ -54,6 +54,6 @@
   crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
      integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script stc="main.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>

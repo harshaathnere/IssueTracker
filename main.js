@@ -1,32 +1,46 @@
 document.getElementById('issueInputForm').addEventListener('submit',saveIssue);
 
-function savaIssue(e){
+function saveIssue(e){
 var issueDesc = document.getElementById('issuesDecInput').value;
-var issueSeverity = document.getElementById('issuesServerityInput').value;
-var assignedTo = document.getElementById('issuesAssignedInput').value;
+var issueSeverity = document.getElementById('issueServerityInput').value;
+var assignedTo = document.getElementById('issueAssignedInput').value;
 var issueId = chance.guid();
-var status = 'Open';
+var issueStatus = 'Open';
 
 var issue = {
     id: issueId,
    description: issueDesc,
    severity: issueSeverity,
-   assinedTo: assignedTo
+   assinedTo: assignedTo,
+   status: issueStatus
 }
+if(localStorage.getItem('issues') == null){
+    var issues =[];
+    issues.push(issue);
+    localStorage.setItem('issues',JSON.stringify(issues))
+} 
+else {
+    var issues = JSON.parse[localStorage.getItem('issues')]
+    issues.push(issue);
+    localStorage.setItem('issues',JSON.stringify(issues))
+}
+document.getElementById('issueInputForm').reset();
+fetchIssues();
+e.preventDefault();
 }
 
 function fetchIssues(){
-    var issues = JSON.parse(localStorage).getItem('issues');
-    var issueList = document.getElementById('issueList');
+    var issues = JSON.parse(localStorage.getItem('issues'));
+    var issuesListe = document.getElementById('issuesList');
     issuesList.innerHTML = '';
-     for(var i=0;i<issues.length;i++){
+     for(var i=0;i<issues.length; i++){
          var id = issues[i].id;
          var desc = issues[i].description;
          var severity = issues[i].severity;
          var assignedTo = issues[i].assignedTo;
          var status = issues[i].status;
 
-         issuesList.innerHTML ='<div class="well>' +
+         issueList.innerHTML ='<div class="well>' +
                                  '<h6>Issue ID:' + id +'</h6>'+
                                      '<p><span class="label label-info">' + status +'</span></p>' +
                                      '<h3>' +desc +'</h3>' +
@@ -34,6 +48,6 @@ function fetchIssues(){
                                      '<p><span class="glyphicon glyphicon-user"></span>' + assignedTo +'</p>'
                                      '<a href="#"  onClick="setStatusClosed(\''+id+'\')" class="btn btn-warning">Close</a>' +
                                      '<a href="#" onClick="deleteIssue(\''+id+'\')" class="btn btn-danger">Delete</a>' +
-                                     '=</div>';
+                                     '</div>';
      }
 }
